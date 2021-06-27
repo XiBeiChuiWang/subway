@@ -9,9 +9,9 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://121.4.80.204:3306/subway?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
-    username: root
-    password: Zx991026.Zy
+    url: *****************
+    username: *****************
+    password: *****************
     hikari:
       max-lifetime: 500000
 
@@ -20,12 +20,12 @@ spring:
     time-zone: GMT+8
 
   redis:
-    host: 121.4.80.204
+    host: *****************
 
   cloud:
     nacos:
       discovery:
-        server-addr: 121.4.80.204:8848
+        server-addr: *****************
 
 
 mybatis-plus:
@@ -53,8 +53,8 @@ logging:
   file:
     path: log/login
 
-#appid: wxca784963cec0dbd7
-#secret: 51706c83f79ae5565e07896fb9fec0dc
+#appid: *****************
+#secret: *****************
 
-appid: wxb9be6f412ede54f8
-secret: 65dde8526087353aa389d4761da6107e
+appid: *****************
+secret: *****************
