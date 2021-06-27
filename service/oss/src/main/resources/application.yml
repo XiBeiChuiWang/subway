@@ -1,0 +1,38 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: oss
+
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+      enabled: true
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 121.4.80.204:8848
+
+
+END_POIND: sts.aliyuncs.com
+ACCESS_KEY_ID: LTAI5tCWXzMtrGdpAJnhYFBs
+ACCESS_KEY_SECRET: qfikaorQXURnPZLWUV1egLt7GoFYdE
+BUCKET_NAME: zhang-xiaolan
+ROLE_ARN: acs:ram::1523507524044975:role/ramosstest
+logging:
+  level:
+    root: warn
+    com.subway: info
+  file:
+    path: log/oss
+
+#涛
+appid: wxb9be6f412ede54f8
+secret: 65dde8526087353aa389d4761da6107e
+
+
+#appid: wxca784963cec0dbd7
+#secret: 51706c83f79ae5565e07896fb9fec0dc

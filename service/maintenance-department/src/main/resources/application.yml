@@ -1,0 +1,44 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: maintenance
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://121.4.80.204:3306/subway?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: Zx991026.Zy
+    hikari:
+      max-lifetime: 500000
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  redis:
+    host: 121.4.80.204
+
+  profiles:
+    active: dev
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 121.4.80.204:8848
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.subway.entity
+
+appid: wxb9be6f412ede54f8
+secret: 65dde8526087353aa389d4761da6107e
+
+logging:
+  level:
+    root: warn
+    com.subway: info
+  file:
+    path: log/repair

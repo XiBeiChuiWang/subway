@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  oss:
+    build: .
+    image: oss
+    ports:
+    - "8888:8888"
+

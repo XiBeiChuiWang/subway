@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  Inspection:
+    build: .
+    image: gateway
+    ports:
+    - "20427:20427"
+

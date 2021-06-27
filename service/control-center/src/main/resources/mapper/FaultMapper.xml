@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.subway.mapper.FaultMapper">
+
+    <select id="findById" resultType="com.subway.entity.vo.FaultMessage">
+        select f.fault_id,f.fault_equipment,u.user_name,f.fault_place,f.create_time
+        from user u,fault f
+        where u.user_openid = f.fault_inspection_user_id and f.fault_id = #{faultId}
+    </select>
+
+    <select id="findFaultVo" resultType="com.subway.entity.vo.FaultVo" >
+        SELECT f.`fault_id`,f.`fault_equipment`,f.`fault_place`,f.`fault_describe`,
+        f.`fault_inspection_user_id`,f.`fault_control_user_id`,f.`fault_repair_user_id`,
+        (SELECT user_name FROM `user` WHERE user_openid = f.fault_inspection_user_id) AS inspectionUserName,
+        (SELECT user_name FROM `user` WHERE user_openid = f.fault_control_user_id) AS controlUserName,
+        (SELECT user_name FROM `user` WHERE user_openid = f.fault_repair_user_id) AS repairUserName,
+        (SELECT user_avatar FROM `user` WHERE user_openid = f.fault_inspection_user_id) AS userAvatar,
+        f.`create_time`
+        FROM fault f
+
+        <where>
+            <if test="1 == 1">
+                fault_state = #{state}
+            </if>
+            <if test="1 == 1">
+                and create_time >= #{date}
+            </if>
+        </where>
+        order by f.create_time DESC
+        limit #{current},#{limit}
+    </select>
+
+    <select id="findFaultVoById" resultType="com.subway.entity.vo.FaultVo">
+        SELECT f.`fault_id`,f.`fault_equipment`,f.`fault_place`,f.`fault_describe`,
+        f.`fault_inspection_user_id`,f.`fault_control_user_id`,f.`fault_repair_user_id`,
+        (SELECT user_name FROM `user` WHERE user_openid = f.fault_inspection_user_id) AS inspectionUserName,
+        (SELECT user_name FROM `user` WHERE user_openid = f.fault_control_user_id) AS controlUserName,
+        (SELECT user_name FROM `user` WHERE user_openid = f.fault_repair_user_id) AS repairUserName,
+        (SELECT user_avatar FROM `user` WHERE user_openid = f.fault_inspection_user_id) AS userAvatar,
+        f.`create_time`
+        FROM fault f
+        <where>
+            <if test="1 == 1">
+                fault_id = #{faultId}
+            </if>
+        </where>
+    </select>
+</mapper>

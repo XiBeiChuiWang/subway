@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  Inspection:
+    build: .
+    image: maintenanceapp
+    ports:
+    - "8003:8003"
+

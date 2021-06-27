@@ -1,0 +1,12 @@
+2021-05-15 15:07:34.079  INFO 11284 --- [main] com.subway.Test01                        : No active profile set, falling back to default profiles: default
+2021-05-15 15:07:38.901  WARN 11284 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-05-15 15:07:38.907  WARN 11284 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-05-15 15:07:41.954  INFO 11284 --- [main] com.subway.Test01                        : Started Test01 in 9.183 seconds (JVM running for 10.166)
+2021-05-15 15:07:47.623  INFO 276 --- [main] com.subway.Test01                        : No active profile set, falling back to default profiles: default
+2021-05-15 15:07:52.131  WARN 276 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-05-15 15:07:52.138  WARN 276 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-05-15 15:07:54.884  INFO 276 --- [main] com.subway.Test01                        : Started Test01 in 8.515 seconds (JVM running for 9.832)
+2021-05-15 15:20:47.586  INFO 9312 --- [main] com.subway.Test01                        : No active profile set, falling back to default profiles: default
+2021-05-15 15:20:52.228  WARN 9312 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-05-15 15:20:52.236  WARN 9312 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-05-15 15:20:55.261  INFO 9312 --- [main] com.subway.Test01                        : Started Test01 in 8.965 seconds (JVM running for 9.872)

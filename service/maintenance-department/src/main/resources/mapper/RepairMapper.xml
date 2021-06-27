@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.subway.mapper.RepairMapper">
+
+<!--    <select id="findRepairVo" resultMap="Mrepair">-->
+<!--        select f.fault_id,f.fault_place,f.fault_equipment,f.fault_describe,f.fault_picture,f.fault_inspection_user_id,-->
+<!--        f.fault_control_user_id,f.fault_state,-->
+<!--        (SELECT user_name FROM `user` WHERE user_openid = f.fault_inspection_user_id) AS fault_inspection_user_name,-->
+<!--        (SELECT user_name FROM `user` WHERE user_openid = f.fault_control_user_id) AS fault_control_user_name,-->
+<!--        f.create_time as f_create_time,-->
+<!--        r.repair_id,r.repair_user_id,-->
+<!--        (SELECT user_name FROM `user` WHERE user_openid = r.repair_user_id) AS r_user_name,-->
+<!--        r.repair_describe,r.create_time as r_create_time-->
+<!--        from fault f,repair r-->
+<!--        where f.fault_id = r.repair_fault_id-->
+<!--        order by f.create_time DESC , r.create_time DESC-->
+<!--        limit #{current},#{limit}-->
+<!--    </select>-->
+<!--    -->
+<!--    <resultMap id="Mrepair" type="com.subway.entity.vo.MFaultVo">-->
+<!--        <result property="fault_id" column="fault_id"></result>-->
+<!--        <result property="fault_place" column="fault_place"></result>-->
+<!--        <result property="fault_equipment" column="fault_equipment"></result>-->
+<!--        <result property="fault_describe" column="fault_describe"></result>-->
+<!--        <result property="fault_picture" column="fault_picture"></result>-->
+<!--        <result property="fault_inspection_user_id" column="fault_inspection_user_id"></result>-->
+<!--        <result property="fault_control_user_id" column="fault_control_user_id"></result>-->
+<!--        <result property="fault_state" column="fault_state"></result>-->
+<!--        <result property="fault_inspection_user_name" column="fault_inspection_user_name"></result>-->
+<!--        <result property="fault_control_user_name" column="fault_control_user_name"></result>-->
+<!--        <result property="f_create_time" column="f_create_time"></result>-->
+<!--        <collection property="repairVos" ofType="com.subway.entity.vo.MRepairVo">-->
+<!--            <result property="repair_id" column="repair_id"></result>-->
+<!--            <result property="repair_user_id" column="repair_user_id"></result>-->
+<!--            <result property="r_user_name" column="r_user_name"></result>-->
+<!--            <result property="repair_describe" column="repair_describe"></result>-->
+<!--            <result property="r_create_time" column="r_create_time"></result>-->
+<!--        </collection>-->
+<!--    </resultMap>-->
+
+    <select id="findRepairVo" resultType="com.subway.entity.vo.FaultVo">
+        SELECT f.`fault_id`,f.`fault_equipment`,f.`fault_place`,f.`fault_describe`,
+                f.`fault_inspection_user_id`,f.`fault_control_user_id`,f.`fault_repair_user_id`,
+        (SELECT user_name FROM `user` WHERE user_openid = f.fault_inspection_user_id) AS inspectionUserName,
+        (SELECT user_name FROM `user` WHERE user_openid = f.fault_control_user_id) AS controlUserName,
+        (SELECT user_name FROM `user` WHERE user_openid = f.fault_repair_user_id) AS repairUserName,
+        (SELECT user_avatar FROM `user` WHERE user_openid = f.fault_inspection_user_id) AS userAvatar,
+        f.`create_time`
+        FROM fault f
+        where f.`fault_repair_user_id` = #{openId} and f.fault_state = #{state}
+    </select>
+</mapper>

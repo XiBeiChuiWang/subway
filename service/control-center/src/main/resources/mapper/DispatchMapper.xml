@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.subway.mapper.DispatchMapper">
+
+    <select id="findDispatchVo" resultType="com.subway.entity.vo.DispatchVo">
+        SELECT d.dispatch_id ,d.dispatch_fault_id,d.dispatch_from_user_id,d.dispatch_to_user_id,
+        (SELECT user_name FROM `user` WHERE user_openid=d.dispatch_from_user_id) AS fromUserName,
+        (SELECT user_name FROM `user` WHERE user_openid=d.dispatch_to_user_id) AS toUserName,
+        d.`dispatch_state`,d.create_time
+        FROM dispatch d
+        <where>
+            <if test="level == 7">
+                d.dispatch_from_user_id=#{openId}
+            </if>
+            <if test="1 == 1">
+                and create_time >= #{date}
+            </if>
+        </where>
+        order by d.create_time DESC
+        limit #{current},#{limit}
+    </select>
+</mapper>

@@ -1,0 +1,62 @@
+server:
+  port: 20427
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 121.4.80.204:8848
+
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+
+      routes:
+        - id: login
+          uri: http://localhost:8001/
+          predicates:
+            - Path=/common/**
+        - id: inspection
+          uri: http://localhost:8002/
+          predicates:
+            - Path=/inspection/**
+        - id: oss
+          uri: http://localhost:8888/
+          predicates:
+            - Path=/oss/**
+
+        - id: control
+          uri: http://localhost:8000/
+          predicates:
+            - Path=/center/**
+
+        - id: control
+          uri: http://localhost:8003/
+          predicates:
+            - Path=/maintenance/**
+
+#        - id: ws
+#          uri: lb:ws://control-center
+#          predicates:
+#            - Path=/center/webSocket
+
+
+#      routes:
+#        - id: login
+#          uri: http://121.4.80.204:8001/  /center/webSocket
+#          predicates:
+#            - Path=/common/**
+#        - id: inspection
+#          uri: http://121.4.80.204:8002/
+#          predicates:
+#            - Path=/inspection/**
+#        - id: oss
+#          uri: http://121.4.80.204:8888/
+#          predicates:
+#            - Path=/oss/**
+#
+#        - id: control
+#          uri: http://121.4.80.204:8000/
+#          predicates:
+#            - Path=/center/**
