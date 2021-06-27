@@ -20,7 +20,7 @@ import java.util.Date;
 public class JwtUtils {
 
     //常量
-    public static final String APP_SECRET = "ukc8BDbRigUDaY6pZFfWus2jZWLPHO"; //秘钥
+    public static final String APP_SECRET = "*****************"; //秘钥
 
     //生成token字符串的方法
     public static String getJwtToken(String openId, String level, long time) {
