@@ -5,7 +5,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 121.4.80.204:8848
+        server-addr: *****************
 
     gateway:
       discovery:
@@ -41,22 +41,3 @@ spring:
 #          predicates:
 #            - Path=/center/webSocket
 
-
-#      routes:
-#        - id: login
-#          uri: http://121.4.80.204:8001/  /center/webSocket
-#          predicates:
-#            - Path=/common/**
-#        - id: inspection
-#          uri: http://121.4.80.204:8002/
-#          predicates:
-#            - Path=/inspection/**
-#        - id: oss
-#          uri: http://121.4.80.204:8888/
-#          predicates:
-#            - Path=/oss/**
-#
-#        - id: control
-#          uri: http://121.4.80.204:8000/
-#          predicates:
-#            - Path=/center/**
